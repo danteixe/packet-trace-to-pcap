@@ -60,23 +60,8 @@ usage: pt_process [-v | --version] [-h | --help] <input-packet-trace-file> [-s |
 
 Let's go over the available options:
 
-<style>
-table th:first-of-type {
-    width: 3%;
-}
-table th:nth-of-type(2) {
-    width: 10%;
-}
-table th:nth-of-type(3) {
-    width: 50%;
-}
-table th:nth-of-type(4) {
-    width: 30%;
-}
-</style>
-
 Option                         | Description
 -------------------------------|--------------------
-\-\-help \-h          | Display the help message explaining how to use the script.
-\-\-version \-v       | Display the current software version.
-\-\-split \-s         | Separates packets into multiple PCAP files according to their traffic flow: ingress, egress, punted. Otherwise, all packets are stored in a single file.
+\-\-help          \-h          | Display the help message explaining how to use the script.
+\-\-version          \-v       | Display the current software version.
+\-\-split          \-s         | Separates packets into multiple PCAP files according to their traffic flow: ingress, egress, punted. Otherwise, all packets are stored in a single file.
