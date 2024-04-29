@@ -43,4 +43,6 @@ echo "3. Create the directory and move the files."
 mkdir tests/test-results-split
 mv tests/test-data/*.pcap tests/test-results-split
 
-exit 0 
+echo $rc
+
+exit $rc
