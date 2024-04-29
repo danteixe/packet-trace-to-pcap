@@ -1,0 +1,204 @@
+Packet: 1           CBUG ID: 1
+Summary
+  Input     : GigabitEthernet2
+  Output    : internal0/0/rp:0
+  State     : PUNT 11  (For-us data)
+  Timestamp
+    Start   : 250577880851855 ns (04/18/2024 14:13:10.155 UTC)
+    Stop    : 250577880888668 ns (04/18/2024 14:13:10.192 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 49863
+      DstPort   : 1967
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 19 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 37 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 176 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 44 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 9061 ns
+  Feature: DEBUG_COND_APPLICATION_IN_EXT
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 34 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT_EXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 12 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS_EXT
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 2644 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS_EXT
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 35 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE_EXT
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 1095 ns
+  Feature: IPV4_INTERNAL_ARL_SANITY_EXT
+    Entry       : Output - 0x8143bd88
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 676 ns
+  Feature: IPV4_VFR_REFRAG_EXT
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 725 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY_EXT
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 1275 ns
+  Feature: INTERNAL_TRANSMIT_PKT_EXT
+    Entry       : Output - 0x8143a88c
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 9538 ns
+Packet Copy In
+  00530003 00010053 00020002 08004500 00500000 0000fe11 3895c000 0201c000
+  0206c2c7 07af003c ba4a012a 00340000 00000003 00100000 0000c000 02061f90
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3895
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 49863
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xba4a
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  01010000 000e005e 00a60028 20010000 00000000 00000008 00000000 80000b00
+  02062281 ff030000 00000000 c084e0e7 00000000 00000001 00010000 00000000
+  00ff0300 00000000 00530003 00010053 00020002 08004500 00500000 0000fe11
+  3895c000 0201c000 0206c2c7 07af003c ba4a012a 00340000 00000003 00100000
+  0000c000 02061f90 13880001 001c0000 00000000 00000000 00000000 00000000
+  00000000 0000
+  Punt/Inject
+    Version             : 1
+    Header type         : 1
+    QFP ID              : 0
+    Epoch               : 0
+    Network Start       : 14
+    Packet Length       : 94
+    Total Length        : 166
+    Feature Hdr Length  : 0
+    Platform Hdr Length : 40
+    Common Hdr Length   : 32
+    Linktype            : 1
+    QoS Discard Class   : 0
+    QoS Group           : 0
+    Table ID Hdl        : 0
+    PAL Interface Hdl   : 8
+    Inject Interface Hdl: 0
+    Flags               : 0x8000
+    Cause               : 11
+    Sub-Cause           : 0
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3895
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 49863
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xba4a
+  Decode halted - unsupported udp port number
+
+IOSd Path Flow: Packet: 1    CBUG ID: 1
+  Feature: INFRA
+  Pkt Direction: IN
+    Packet Rcvd From DATAPLANE
+
+  Feature: IP
+  Pkt Direction: IN
+    Packet Enqueued in IP layer
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Interface   : GigabitEthernet2
+
+  Feature: IP
+  Pkt Direction: IN
+  FORWARDED To transport layer 
+    Source        : 192.0.2.1 
+    Destination   : 192.0.2.6 
+    Interface     : GigabitEthernet2
+
+  Feature: UDP
+  Pkt Direction: IN
+    src         : 192.0.2.1(49863)
+    dst         : 192.0.2.6(1967)
+    length      : 60
+
+  Feature: UDP
+  Pkt Direction: IN
+  FORWARDED 
+	UDP: Forwarded the packet to the Application
+	Source      : 192.0.2.1(49863)
+	Destination : 192.0.2.6(1967)
+
+
+  Feature: UDP
+  Pkt Direction: IN
+  CONSUMED 
+	UDP: Packet consumed
+	Source      : 192.0.2.1(49863)
+	Destination : 192.0.2.6(1967)

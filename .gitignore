@@ -1,0 +1,3 @@
+pt-process-venv/*
+private-tests/*
+bdb-specific/*

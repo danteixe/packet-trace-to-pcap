@@ -1,0 +1,1560 @@
+Packet: 0           CBUG ID: 0
+Summary
+  Input     : GigabitEthernet1
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 253042736451421 ns (04/18/2024 14:12:36.633893 UTC)
+    Stop    : 253042736541906 ns (04/18/2024 14:12:36.633984 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 51898
+      DstPort   : 1967
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 280 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 834 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 527 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 400 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 294 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 78 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 33 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 1579 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 129 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 982 ns
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 278 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 549 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 205 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 1175 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 7050 ns
+Packet Copy In
+  00530002 00010053 00010001 08004500 00500000 0000ff11 3795c000 0201c000
+  0206caba 07af003c b2580129 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3795
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 51898
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xb258
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530003 00010053 00020002 08004500 00500000 0000fe11 3895c000 0201c000
+  0206caba 07af003c b2580129 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3895
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 51898
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xb258
+  Decode halted - unsupported udp port number
+Packet: 1           CBUG ID: 1
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet1
+  State     : FWD 
+  Timestamp
+    Start   : 253042737746461 ns (04/18/2024 14:12:36.635188 UTC)
+    Stop    : 253042737756559 ns (04/18/2024 14:12:36.635198 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 17 (UDP)
+      SrcPort   : 1967
+      DstPort   : 51898
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 231 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 56 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 492 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 3286 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 48 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 160 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 820 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 102 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 1776 ns
+Packet Copy In
+  00530002 00020053 00030001 08004500 00340000 0000fe11 38b1c000 0206c000
+  020107af caba0020 b1c90229 00180000 00000002 00100000 0000c000 02061f91
+  1388
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 52
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 553
+    Destination Port    : 24
+    Length              : 0
+    Checksum            : 0x0000
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530001 00010053 00020001 08004500 00340000 0000fe11 38b1c000 0206c000
+  020107af caba0020 b1c90229 00180000 00000002 00100000 0000c000 02061f91
+  1388
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 52
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 553
+    Destination Port    : 24
+    Length              : 0
+    Checksum            : 0x0000
+  Decode halted - unsupported udp port number
+Packet: 2           CBUG ID: 2
+Summary
+  Input     : GigabitEthernet1
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 253042738688993 ns (04/18/2024 14:12:36.636131 UTC)
+    Stop    : 253042738714879 ns (04/18/2024 14:12:36.636157 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 51898
+      DstPort   : 8081
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 128 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 381 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 463 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 58 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 80 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 40 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 39 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 496 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 71 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 261 ns
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 140 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 174 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 154 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 751 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 5220 ns
+Packet Copy In
+  00530002 00010053 00010001 08004500 002c0001 0000ff11 37b8c000 0201c000
+  0206caba 1f910018 8a970001 0000abcd abcdabcd abcdabcd abcd0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x0001
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x37b8
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 51898
+    Destination Port    : 8081
+    Length              : 24
+    Checksum            : 0x8a97
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530003 00010053 00020002 08004500 002c0001 0000fe11 38b8c000 0201c000
+  0206caba 1f910018 8a970001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x0001
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b8
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 51898
+    Destination Port    : 8081
+    Length              : 24
+    Checksum            : 0x8a97
+  Decode halted - unsupported udp port number
+Packet: 3           CBUG ID: 3
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet1
+  State     : FWD 
+  Timestamp
+    Start   : 253042739398633 ns (04/18/2024 14:12:36.636840 UTC)
+    Stop    : 253042739403167 ns (04/18/2024 14:12:36.636845 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 17 (UDP)
+      SrcPort   : 8081
+      DstPort   : 51898
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 50 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 44 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 148 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 141 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 146 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 325 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 103 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 854 ns
+Packet Copy In
+  00530002 00020053 00030001 08004500 002c1037 0000fe11 2882c000 0206c000
+  02011f91 caba0018 8a970001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x1037
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x2882
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 8081
+    Destination Port    : 51898
+    Length              : 24
+    Checksum            : 0x8a97
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530001 00010053 00020001 08004500 002c1037 0000fe11 2882c000 0206c000
+  02011f91 caba0018 8a970001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x1037
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x2882
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 8081
+    Destination Port    : 51898
+    Length              : 24
+    Checksum            : 0x8a97
+  Decode halted - unsupported udp port number
+Packet: 17          CBUG ID: 17
+Summary
+  Input     : GigabitEthernet1
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 253102734729279 ns (04/18/2024 14:13:36.632171 UTC)
+    Stop    : 253102734744552 ns (04/18/2024 14:13:36.632186 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 54958
+      DstPort   : 1967
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 149 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 1137 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 515 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 298 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 154 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 42 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 12 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 710 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 124 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 860 ns
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 199 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 527 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 204 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 1112 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 3530 ns
+Packet Copy In
+  00530002 00010053 00010001 08004500 00500000 0000ff11 3795c000 0201c000
+  0206d6ae 07af003c a662012b 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3795
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 54958
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xa662
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530003 00010053 00020002 08004500 00500000 0000fe11 3895c000 0201c000
+  0206d6ae 07af003c a662012b 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3895
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 54958
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xa662
+  Decode halted - unsupported udp port number
+Packet: 18          CBUG ID: 18
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet1
+  State     : FWD 
+  Timestamp
+    Start   : 253102735980241 ns (04/18/2024 14:13:36.633422 UTC)
+    Stop    : 253102736022602 ns (04/18/2024 14:13:36.633464 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 17 (UDP)
+      SrcPort   : 1967
+      DstPort   : 54958
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 123 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 47 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 440 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 284 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 480 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 449 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 221 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 5130 ns
+Packet Copy In
+  00530002 00020053 00030001 08004500 00340000 0000fe11 38b1c000 0206c000
+  020107af d6ae0020 a5d3022b 00180000 00000002 00100000 0000c000 02061f91
+  1388
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 52
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 555
+    Destination Port    : 24
+    Length              : 0
+    Checksum            : 0x0000
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530001 00010053 00020001 08004500 00340000 0000fe11 38b1c000 0206c000
+  020107af d6ae0020 a5d3022b 00180000 00000002 00100000 0000c000 02061f91
+  1388
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 52
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 555
+    Destination Port    : 24
+    Length              : 0
+    Checksum            : 0x0000
+  Decode halted - unsupported udp port number
+Packet: 19          CBUG ID: 19
+Summary
+  Input     : GigabitEthernet1
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 253102737145850 ns (04/18/2024 14:13:36.634588 UTC)
+    Stop    : 253102737152302 ns (04/18/2024 14:13:36.634594 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 54958
+      DstPort   : 8081
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 66 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 754 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 468 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 138 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 58 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 36 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 34 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 284 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 54 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 108 ns
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 70 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 111 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 60 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 205 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 1352 ns
+Packet Copy In
+  00530002 00010053 00010001 08004500 002c0001 0000ff11 37b8c000 0201c000
+  0206d6ae 1f910018 7ea30001 0000abcd abcdabcd abcdabcd abcd0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x0001
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x37b8
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 54958
+    Destination Port    : 8081
+    Length              : 24
+    Checksum            : 0x7ea3
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530003 00010053 00020002 08004500 002c0001 0000fe11 38b8c000 0201c000
+  0206d6ae 1f910018 7ea30001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x0001
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b8
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 54958
+    Destination Port    : 8081
+    Length              : 24
+    Checksum            : 0x7ea3
+  Decode halted - unsupported udp port number
+Packet: 20          CBUG ID: 20
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet1
+  State     : FWD 
+  Timestamp
+    Start   : 253102737962276 ns (04/18/2024 14:13:36.635404 UTC)
+    Stop    : 253102737981830 ns (04/18/2024 14:13:36.635424 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 17 (UDP)
+      SrcPort   : 8081
+      DstPort   : 54958
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 93 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 34 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 122 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 170 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 13 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 61 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 265 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 111 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 3708 ns
+Packet Copy In
+  00530002 00020053 00030001 08004500 002c1038 0000fe11 2881c000 0206c000
+  02011f91 d6ae0018 7ea30001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x1038
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x2881
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 8081
+    Destination Port    : 54958
+    Length              : 24
+    Checksum            : 0x7ea3
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530001 00010053 00020001 08004500 002c1038 0000fe11 2881c000 0206c000
+  02011f91 d6ae0018 7ea30001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x1038
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x2881
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 8081
+    Destination Port    : 54958
+    Length              : 24
+    Checksum            : 0x7ea3
+  Decode halted - unsupported udp port number
+Packet: 68          CBUG ID: 68
+Summary
+  Input     : GigabitEthernet1
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 253282735239555 ns (04/18/2024 14:16:36.632681 UTC)
+    Stop    : 253282735290355 ns (04/18/2024 14:16:36.632732 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 50867
+      DstPort   : 1967
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 377 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 874 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 1408 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 338 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 140 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 35 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 12 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 941 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 134 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 1080 ns
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 198 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 523 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 203 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 1184 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 5783 ns
+Packet Copy In
+  00530002 00010053 00010001 08004500 00500000 0000ff11 3795c000 0201c000
+  0206c6b3 07af003c b6570131 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3795
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 50867
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xb657
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530003 00010053 00020002 08004500 00500000 0000fe11 3895c000 0201c000
+  0206c6b3 07af003c b6570131 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3895
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 50867
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xb657
+  Decode halted - unsupported udp port number
+Packet: 69          CBUG ID: 69
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet1
+  State     : FWD 
+  Timestamp
+    Start   : 253282736654504 ns (04/18/2024 14:16:36.634096 UTC)
+    Stop    : 253282736660324 ns (04/18/2024 14:16:36.634102 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 17 (UDP)
+      SrcPort   : 1967
+      DstPort   : 50867
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 64 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 44 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 450 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 205 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 148 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 610 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 232 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 1691 ns
+Packet Copy In
+  00530002 00020053 00030001 08004500 00340000 0000fe11 38b1c000 0206c000
+  020107af c6b30020 b5c80231 00180000 00000002 00100000 0000c000 02061f91
+  1388
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 52
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 561
+    Destination Port    : 24
+    Length              : 0
+    Checksum            : 0x0000
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530001 00010053 00020001 08004500 00340000 0000fe11 38b1c000 0206c000
+  020107af c6b30020 b5c80231 00180000 00000002 00100000 0000c000 02061f91
+  1388
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 52
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 561
+    Destination Port    : 24
+    Length              : 0
+    Checksum            : 0x0000
+  Decode halted - unsupported udp port number
+Packet: 70          CBUG ID: 70
+Summary
+  Input     : GigabitEthernet1
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 253282738104562 ns (04/18/2024 14:16:36.635546 UTC)
+    Stop    : 253282738152832 ns (04/18/2024 14:16:36.635595 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 50867
+      DstPort   : 8081
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 223 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 75 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 559 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 613 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 52 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 33 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet1
+    Output      : <unknown>
+    Lapsed time : 13 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 194 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 57 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 159 ns
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 51 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 145 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 84 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 251 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet1
+    Output      : GigabitEthernet2
+    Lapsed time : 4279 ns
+Packet Copy In
+  00530002 00010053 00010001 08004500 002c0001 0000ff11 37b8c000 0201c000
+  0206c6b3 1f910018 8e9e0001 0000abcd abcdabcd abcdabcd abcd0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x0001
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x37b8
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 50867
+    Destination Port    : 8081
+    Length              : 24
+    Checksum            : 0x8e9e
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530003 00010053 00020002 08004500 002c0001 0000fe11 38b8c000 0201c000
+  0206c6b3 1f910018 8e9e0001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x0001
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x38b8
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 50867
+    Destination Port    : 8081
+    Length              : 24
+    Checksum            : 0x8e9e
+  Decode halted - unsupported udp port number
+Packet: 71          CBUG ID: 71
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet1
+  State     : FWD 
+  Timestamp
+    Start   : 253282738957820 ns (04/18/2024 14:16:36.636400 UTC)
+    Stop    : 253282738961078 ns (04/18/2024 14:16:36.636403 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 17 (UDP)
+      SrcPort   : 8081
+      DstPort   : 50867
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 67 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 45 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 125 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 153 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 12 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 70 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 168 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 70 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet1
+    Lapsed time : 723 ns
+Packet Copy In
+  00530002 00020053 00030001 08004500 002c103b 0000fe11 287ec000 0206c000
+  02011f91 c6b30018 8e9e0001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x103b
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x287e
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 8081
+    Destination Port    : 50867
+    Length              : 24
+    Checksum            : 0x8e9e
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530001 00010053 00020001 08004500 002c103b 0000fe11 287ec000 0206c000
+  02011f91 c6b30018 8e9e0001 0000abcd abcdabcd abcdabcd abcd
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 44
+    Identifier          : 0x103b
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x287e
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  UDP
+    Source Port         : 8081
+    Destination Port    : 50867
+    Length              : 24
+    Checksum            : 0x8e9e
+  Decode halted - unsupported udp port number

@@ -1,0 +1,405 @@
+Packet: 57          CBUG ID: 57
+Summary
+  Input     : INJ.2  
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 250466717972098 ns (04/18/2024 14:15:09.757314 UTC)
+    Stop    : 250466717983518 ns (04/18/2024 14:15:09.757325 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 1 (ICMP)
+  Feature: IPV4_VFR_REFRAG_EXT
+    Entry       : Output - 0x8146831c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 32 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT_EXT
+    Entry       : Output - 0x81439d64
+    Input       : internal0/0/rp:0
+     Output      : GigabitEthernet2
+    Lapsed time : 35 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE_EXT
+    Entry       : Output - 0x812c8e3c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 1629 ns
+  Feature: DEBUG_COND_MAC_EGRESS_EXT
+    Entry       : Output - 0x81439d78
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 489 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_EXT
+    Entry       : Output - 0x81439d68
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_FRAG_EXT
+    Entry       : Output - 0x814672b8
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 52 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY_EXT
+     Entry       : Output - 0x81470c18
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 1141 ns
+  Feature: DEBUG_COND_OUTPUT_PKT_EXT
+    Entry       : Output - 0x81439d7c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 226 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT_EXT
+    Entry       : Output - 0x8147e7a4
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 4305 ns
+Packet Copy In
+  45000040 20950000 ff011720 c0000201 c0000206 08002677 20920001 00000000
+  0eeed25c abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd 0206c000
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2095
+     IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x1720
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ICMP
+    Type                : 8 (Echo)
+    Code                : 0 (No Code)
+    Checksum            : 0x2677
+    Identifier          : 0x2092
+    Sequence            : 0x0001
+Packet Copy Out
+  00530002 00010053 00010001 08004500 00402095 0000ff01 1720c000 0201c000
+  02060800 26772092 00010000 00000eee d25cabcd abcdabcd abcdabcd abcdabcd
+  abcdabcd abcdabcd abcd0206 c000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+     Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2095
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x1720
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ICMP
+    Type                : 8 (Echo)
+    Code                : 0 (No Code)
+    Checksum            : 0x2677
+    Identifier          : 0x2092
+    Sequence            : 0x0001
+Packet: 74          CBUG ID: 74
+Summary
+  Input     : INJ.2  
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 250526718246226 ns (04/18/2024 14:16:09.757588 UTC)
+    Stop    : 250526718288590 ns (04/18/2024 14:16:09.757630 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 1 (ICMP)
+  Feature: IPV4_VFR_REFRAG_EXT
+    Entry       : Output - 0x8146831c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 89 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT_EXT
+    Entry       : Output - 0x81439d64
+    Input       : internal0/0/rp:0
+     Output      : GigabitEthernet2
+    Lapsed time : 35 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE_EXT
+    Entry       : Output - 0x812c8e3c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 448 ns
+  Feature: DEBUG_COND_MAC_EGRESS_EXT
+    Entry       : Output - 0x81439d78
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 126 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_EXT
+    Entry       : Output - 0x81439d68
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 32 ns
+  Feature: IPV4_OUTPUT_FRAG_EXT
+    Entry       : Output - 0x814672b8
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 50 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY_EXT
+     Entry       : Output - 0x81470c18
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 1756 ns
+  Feature: DEBUG_COND_OUTPUT_PKT_EXT
+    Entry       : Output - 0x81439d7c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 240 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT_EXT
+    Entry       : Output - 0x8147e7a4
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 23627 ns
+Packet Copy In
+  45000040 20970000 ff01171e c0000201 c0000206 0800fe1a 20940001 00000000
+  0eefbcbc abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd 00000000
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2097
+     IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x171e
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ICMP
+    Type                : 8 (Echo)
+    Code                : 0 (No Code)
+    Checksum            : 0xfe1a
+    Identifier          : 0x2094
+    Sequence            : 0x0001
+Packet Copy Out
+  00530002 00010053 00010001 08004500 00402097 0000ff01 171ec000 0201c000
+  02060800 fe1a2094 00010000 00000eef bcbcabcd abcdabcd abcdabcd abcdabcd
+  abcdabcd abcdabcd abcd0000 0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+     Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2097
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x171e
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ICMP
+    Type                : 8 (Echo)
+    Code                : 0 (No Code)
+    Checksum            : 0xfe1a
+    Identifier          : 0x2094
+    Sequence            : 0x0001
+Packet: 76          CBUG ID: 76
+Summary
+  Input     : GigabitEthernet2
+  Output    : internal0/0/rp:0
+  State     : PUNT 11  (For-us data)
+  Timestamp
+    Start   : 250526719723219 ns (04/18/2024 14:16:09.759065 UTC)
+    Stop    : 250526719753857 ns (04/18/2024 14:16:09.759095 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 1 (ICMP)
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 97 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+     Output      : <unknown>
+    Lapsed time : 317 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 316 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 619 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 6364 ns
+  Feature: DEBUG_COND_APPLICATION_IN_EXT
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 52 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT_EXT
+     Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 13 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS_EXT
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 1488 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS_EXT
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 204 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE_EXT
+    Entry       : Input - 0x8143d7f8
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 464 ns
+  Feature: IPV4_INTERNAL_ARL_SANITY_EXT
+    Entry       : Output - 0x8143bd88
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+     Lapsed time : 100 ns
+  Feature: IPV4_VFR_REFRAG_EXT
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 97 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY_EXT
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 429 ns
+  Feature: INTERNAL_TRANSMIT_PKT_EXT
+    Entry       : Output - 0x8143a88c
+    Input       : GigabitEthernet2
+    Output      : internal0/0/rp:0
+    Lapsed time : 12142 ns
+Packet Copy In
+  00530001 00010053 00020001 08004500 00402097 0000fe01 181ec000 0206c000
+  02010000 061b2094 00010000 00000eef bcbcabcd abcdabcd abcdabcd abcdabcd
+  abcdabcd abcdabcd abcd0000 0000
+  ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+     Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2097
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x181e
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ICMP
+    Type                : 0 (Echo Reply)
+    Code                : 0 (No Code)
+    Checksum            : 0x061b
+    Identifier          : 0x2094
+    Sequence            : 0x0001
+Packet Copy Out
+  01010000 000e004e 00960028 20010000 00000000 00000008 00000000 80000b00
+  02060000 00000000 00000000 00000000 00000000 0000004c 004c0000 00000000
+   00000000 00000000 00530001 00010053 00020001 08004500 00402097 0000fe01
+  181ec000 0206c000 02010000 061b2094 00010000 00000eef bcbcabcd abcdabcd
+  abcdabcd abcdabcd abcdabcd abcdabcd abcd0000 0000
+  Punt/Inject
+    Version             : 1
+    Header type         : 1
+    QFP ID              : 0
+    Epoch               : 0
+    Network Start       : 14
+    Packet Length       : 78
+    Total Length        : 150
+    Feature Hdr Length  : 0
+    Platform Hdr Length : 40
+    Common Hdr Length   : 32
+    Linktype            : 1
+    QoS Discard Class   : 0
+    QoS Group           : 0
+    Table ID Hdl        : 0
+    PAL Interface Hdl   : 8
+    Inject Interface Hdl: 0
+    Flags               : 0x8000
+    Cause               : 11
+    Sub-Cause           : 0
+   ARPA
+    Destination MAC     : 0053.0001.0001
+    Source MAC          : 0053.0002.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2097
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x181e
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ICMP
+    Type                : 0 (Echo Reply)
+    Code                : 0 (No Code)
+    Checksum            : 0x061b
+    Identifier          : 0x2094
+    Sequence            : 0x0001
+ 
+ IOSd Path Flow: Packet: 76    CBUG ID: 76
+  Feature: INFRA
+  Pkt Direction: IN
+    Packet Rcvd From DATAPLANE
+
+  Feature: IP
+  Pkt Direction: IN
+    Packet Enqueued in IP layer
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Interface   : GigabitEthernet2
+
+  Feature: IP
+  Pkt Direction: IN
+  FORWARDED To transport layer 
+    Source        : 192.0.2.6 
+    Destination   : 192.0.2.1 
+    Interface     : GigabitEthernet2
+
+  Feature: IP
+  Pkt Direction: IN
+  CONSUMED Echo reply 
+    Source        : 192.0.2.6 
+     Destination   : 192.0.2.1 
+    Interface     : GigabitEthernet2

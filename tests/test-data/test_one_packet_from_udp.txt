@@ -1,0 +1,112 @@
+Packet: 17          CBUG ID: 17
+Summary
+  Input     : INJ.2  
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 250313237896779 ns (04/18/2024 14:12:36.277238 UTC)
+    Stop    : 250313237961590 ns (04/18/2024 14:12:36.277303 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 17 (UDP)
+      SrcPort   : 51898
+      DstPort   : 1967
+  Feature: IPV4_VFR_REFRAG_EXT
+    Entry       : Output - 0x8146831c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 367 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT_EXT
+     Entry       : Output - 0x81439d64
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 40 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE_EXT
+    Entry       : Output - 0x812c8e3c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 1050 ns
+  Feature: DEBUG_COND_MAC_EGRESS_EXT
+    Entry       : Output - 0x81439d78
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 128 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_EXT
+    Entry       : Output - 0x81439d68
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 34 ns
+  Feature: IPV4_OUTPUT_FRAG_EXT
+    Entry       : Output - 0x814672b8
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+     Lapsed time : 50 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY_EXT
+    Entry       : Output - 0x81470c18
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 1204 ns
+  Feature: DEBUG_COND_OUTPUT_PKT_EXT
+    Entry       : Output - 0x81439d7c
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 264 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT_EXT
+    Entry       : Output - 0x8147e7a4
+    Input       : internal0/0/rp:0
+    Output      : GigabitEthernet2
+    Lapsed time : 8350 ns
+Packet Copy In
+  45000050 00000000 ff113795 c0000201 c0000206 caba07af 003cb258 01290034
+  00000000 00020010 00000000 c0000206 1f911388 0001001c 00000000 00000000
+  00000000 00000000 00000000 00000000
+  IPv4
+    Version             : 4
+    Header Length       : 5
+     ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3795
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 51898
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xb258
+  Decode halted - unsupported udp port number
+Packet Copy Out
+  00530002 00010053 00010001 08004500 00500000 0000ff11 3795c000 0201c000
+  0206caba 07af003c b2580129 00340000 00000002 00100000 0000c000 02061f91
+  13880001 001c0000 00000000 00000000 00000000 00000000 00000000 0000
+  ARPA
+    Destination MAC     : 0053.0002.0001
+    Source MAC          : 0053.0001.0001
+     Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 80
+    Identifier          : 0x0000
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 17 (UDP)
+    Header Checksum     : 0x3795
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  UDP
+    Source Port         : 51898
+    Destination Port    : 1967
+    Length              : 60
+    Checksum            : 0xb258
+  Decode halted - unsupported udp port number

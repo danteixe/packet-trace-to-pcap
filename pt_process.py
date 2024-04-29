@@ -1,22 +1,22 @@
-# Copyright (c) 2023 Cisco Systems, Inc.
+# Copyright (c) 2023-2024 Cisco Systems, Inc.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
 # are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above
 #   copyright notice, this list of conditions and the following
 #   disclaimer in the documentation and/or other materials provided
 #   with the distribution.
-# 
+#
 #   Neither the name of the Cisco Systems, Inc. nor the names of its
 #   contributors may be used to endorse or promote products derived
 #   from this software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
@@ -44,10 +44,13 @@ Trace feature.
 import sys # input/output
 import re # regex
 import logging
-from glob import glob
+
+import os.path
 
 from scapy.all import wrpcap
 from scapy.layers.l2 import Ether
+
+# Patterns for parsing the text file
 
 PATTERN_FIRST_LINE = r"^Packet\: [0-9]+.*$"
 PATTERN_EOF = r"^$"
@@ -75,13 +78,17 @@ DIRECTION_OUT_L2 = "out_l2"
 DIRECTION_IN_L2 = "in_l2"
 DIRECTION_BOTH_L2 = "both_l2"
 
+# Patterns for the view component
+
 PATTERN_VIEW_HELP = r"^(-h|--help)$"
 PATTERN_VIEW_VERSION = r"^(-v|--version)$"
 PATTERN_VIEW_SPLIT = r"^(-s|--split)$"
 PATTERN_VIEW_OPTION_GENERIC = r"^\-{1,2}.*$"
 
-DUMMY_L2_FRAME = "ffffffffffff aabbccddeeff 0800"
-DUMMY_L2_FRAME_DOT1Q = "ffffffffffff aabbccddeeff 00000001 0800"
+# Bogus dummy frame headers
+
+DUMMY_L2_FRAME = "005300aaaaaa 005300bbbbbb 0800"
+DUMMY_L2_FRAME_DOT1Q = "0053aaaaaa 005300bbbbbb 00000001 0800"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -96,12 +103,12 @@ def parse_packets(filename):
     packets = []
 
     # Used to skip to the next packet, because the current packet
-    # is not valid for parsing into a PCAP
-    skip = 0
-    stop = 0
+    # cannot be parsed (e.g., doesn't have a hexadump).
+    skip = False
+    stop = False
 
-    with open(filename, "r") as file:
-        while stop == 0:
+    with open(filename, "r", encoding="utf-8") as file:
+        while not stop:
             line = file.readline()
 
             # EOF hit or first line
@@ -110,21 +117,22 @@ def parse_packets(filename):
                 if packet:
 
                     # Check if packet is valid
-                    if "copy_in" not in packet and "copy_out" not in packet:
+                    # It only needs one of the decodes
+                    if ("copy_in" not in packet and "copy_out" not in packet):
                         logger.info(packet)
                         logger.info("Packet doesn't have a decode (or can't be decoded).")
                     else:
                         packets.append(packet)
 
                 if not line:
-                    stop = 1
+                    stop = True
                 else:
                     # Begin work on current packet
                     packet = {}
                     packet["id"] = len(packets)
-                    skip = 0
+                    skip = False
 
-            elif skip == 1: # Skip this packet until the first line is read
+            elif skip: # Skip this packet until the first line is read
                 # Do nothing
                 pass
 
@@ -141,17 +149,12 @@ def parse_packets(filename):
                 #    packet = {}
                 #    skip = 1
 
-            elif re.match(PATTERN_PATH_TRACE, line):
-                #parse_packets_path_trace(file, packet)
-                # Ignore for the time being
-                packet["path_trace"] = {}
-
             elif re.match(PATTERN_COPY_IN, line):
                 packet["copy_in"] = ""
 
                 if "ingress" in packet and re.match(PATTERN_INJECT_INGRESS, packet["ingress"]):
                     continue
-                    # If the ingress interface is INJ, let's ingore the ingress packet decode.
+                    # If the ingress interface is INJ, let's ignore the ingress packet decode.
                     # We'll only consider the egress decode.
                     # With an INJ, the output decode will either be dropped,
                     # sent through and interface, or punted, so the egress
@@ -170,14 +173,9 @@ def parse_packets(filename):
                     aux_header = file.readline()
                     file.seek(last_pos)
 
-                    if re.match(PATTERN_L2, aux_header):
-                        if (packet.get("direction") is not None
-                            and packet["direction"] == DIRECTION_OUT_L2):
-                            packet["direction"] = DIRECTION_BOTH_L2
-                        else:
-                            packet["direction"] = DIRECTION_IN_L2
 
-                    elif re.match(PATTERN_L3_ONLY, aux_header):
+                    if (re.match(PATTERN_L3_ONLY, aux_header) or
+                        re.match(PATTERN_INJECT_INGRESS, packet["ingress"])):
                         packet["direction"] = DIRECTION_IN_L3
 
                     elif re.match(PATTERN_L3, aux_header):
@@ -186,6 +184,16 @@ def parse_packets(filename):
                             packet["direction"] = DIRECTION_BOTH_L3
                         else:
                             packet["direction"] = DIRECTION_IN_L3
+                    else:
+                    #if re.match(PATTERN_L2, aux_header):
+                    # If there's a L2 pattern or none at all, just treat
+                    # it like there's L2 information on the decode
+                        if (packet.get("direction") is not None
+                            and packet["direction"] == DIRECTION_OUT_L2):
+                            packet["direction"] = DIRECTION_BOTH_L2
+                        else:
+                            packet["direction"] = DIRECTION_IN_L2
+
 
             elif re.match(PATTERN_COPY_OUT, line):
                 packet["copy_out"] = ""
@@ -198,7 +206,7 @@ def parse_packets(filename):
                 # If the packet is punted, but it came from a regular ingress interface,
                 # then we must ignore the out decode and only consider the in decode.
 
-                if (re.match(PATTERN_PUNT_STATE, packet["state"]) 
+                if (re.match(PATTERN_PUNT_STATE, packet["state"])
                     and not re.match(PATTERN_INJECT_INGRESS, packet["ingress"])):
 
                     ignore = 1
@@ -216,8 +224,8 @@ def parse_packets(filename):
                     file.seek(last_pos)
                     aux_header = file.readline()
 
-                    while (not re.match(PATTERN_L2, aux_header) 
-                        and not re.match(PATTERN_L3, aux_header) 
+                    while (not re.match(PATTERN_L2, aux_header)
+                        and not re.match(PATTERN_L3, aux_header)
                         and not re.match(PATTERN_COPY_DECODE_ALTED, aux_header)):
 
                         aux_header = file.readline()
@@ -234,17 +242,10 @@ def parse_packets(filename):
                     file.seek(last_pos)
                     aux_header = file.readline()
 
-                if (re.match(PATTERN_COPY_DECODE_ALTED, aux_header) 
+                if (re.match(PATTERN_COPY_DECODE_ALTED, aux_header)
                     or ignore == 1):
                     pass
                     # Ignore the decode
-
-                elif re.match(PATTERN_L2, aux_header):
-                    if (packet.get("direction") is not None
-                        and packet["direction"] == DIRECTION_IN_L2):
-                        packet["direction"] = DIRECTION_BOTH_L2
-                    else:
-                        packet["direction"] = DIRECTION_OUT_L2
 
                 elif re.match(PATTERN_L3, aux_header):
                     if (packet.get("direction") is not None
@@ -253,6 +254,16 @@ def parse_packets(filename):
                     else:
                         packet["direction"] = DIRECTION_OUT_L3
 
+                else:
+                # if re.match(PATTERN_L2, aux_header):
+                # If there's a L2 pattern or none at all, just treat
+                # it like there's L2 information on the decode
+                    if (packet.get("direction") is not None
+                        and packet["direction"] == DIRECTION_IN_L2):
+                        packet["direction"] = DIRECTION_BOTH_L2
+                    else:
+                        packet["direction"] = DIRECTION_OUT_L2
+
             elif re.match(PATTERN_IOSD_PATH_FLOW, line):
                 #parse_packets_iosd_path_flow(file, packet)
                 # Ignore for the time being
@@ -260,7 +271,16 @@ def parse_packets(filename):
 
     return packets
 
-def internal_parse_packets_to_scapy(packet_list, copy_packet_hex, timestamp_ns):
+def internal_parse_packets_to_scapy(copy_packet_hex, timestamp_ns):
+    """
+    Take the packet hexdump from the "copy_in" and "copy_out" fields and 
+    generate a scapy representation of the packet.
+
+    Arguments:
+    - copy_packet_hex: "copy_in" or "copy_out" hex dumps.
+    - timestamp_ns: timestamp when the packet was received.
+    """
+
     copy_packet_hex = copy_packet_hex.replace(' ', '')
     copy_packet_bytes = bytes.fromhex(copy_packet_hex)
 
@@ -269,7 +289,7 @@ def internal_parse_packets_to_scapy(packet_list, copy_packet_hex, timestamp_ns):
     timestamp_seconds = float(timestamp_ns) / 1000000000
     setattr(packet, "time", timestamp_seconds)
 
-    packet_list.append(packet)
+    return packet
 
 def parse_packets_to_scapy(custom_packets):
     ingress_packets = []
@@ -284,118 +304,82 @@ def parse_packets_to_scapy(custom_packets):
         if not "direction" in custom_packet:
             logger.error("Packet %d was not parsed because there's no \"direction\" attribute.",
                          custom_packet["id"])
+            logger.error(custom_packet)
         elif (re.match(PATTERN_PUNT_STATE, custom_packet["state"])
             and re.match(PATTERN_INJECT_INGRESS, custom_packet["ingress"])):
             copy_packet_hex = custom_packet["copy_out"]
-            internal_parse_packets_to_scapy(punted_packets, copy_packet_hex, timestamp_ns)
+            packet = internal_parse_packets_to_scapy(copy_packet_hex, timestamp_ns)
+            punted_packets.append(packet)
 
         elif custom_packet["direction"] == DIRECTION_OUT_L2:
             copy_packet_hex = custom_packet["copy_out"]
-            internal_parse_packets_to_scapy(egress_packets, copy_packet_hex, timestamp_ns)
+            packet = internal_parse_packets_to_scapy(copy_packet_hex, timestamp_ns)
+            egress_packets.append(packet)
 
         elif custom_packet["direction"] == DIRECTION_IN_L2:
             copy_packet_hex = custom_packet["copy_in"]
-            internal_parse_packets_to_scapy(ingress_packets, copy_packet_hex, timestamp_ns)
+            packet = internal_parse_packets_to_scapy(copy_packet_hex, timestamp_ns)
+            ingress_packets.append(packet)
 
         elif custom_packet["direction"] == DIRECTION_OUT_L3:
             copy_packet_hex = DUMMY_L2_FRAME + custom_packet["copy_out"]
-            internal_parse_packets_to_scapy(egress_packets, copy_packet_hex, timestamp_ns)
+            packet = internal_parse_packets_to_scapy(copy_packet_hex, timestamp_ns)
+            egress_packets.append(packet)
 
         elif custom_packet["direction"] == DIRECTION_IN_L3:
             copy_packet_hex = DUMMY_L2_FRAME + custom_packet["copy_in"]
-            internal_parse_packets_to_scapy(ingress_packets, copy_packet_hex, timestamp_ns)
+            packet = internal_parse_packets_to_scapy(copy_packet_hex, timestamp_ns)
+            ingress_packets.append(packet)
 
         elif custom_packet["direction"] == DIRECTION_BOTH_L2:
             copy_packet_hex_egress = custom_packet["copy_out"]
-            internal_parse_packets_to_scapy(egress_packets, copy_packet_hex_egress, timestamp_ns)
+            egress_packet = internal_parse_packets_to_scapy(copy_packet_hex_egress, timestamp_ns)
+            egress_packets.append(egress_packet)
+
             copy_packet_hex_ingress = custom_packet["copy_in"]
-            internal_parse_packets_to_scapy(ingress_packets, copy_packet_hex_ingress, timestamp_ns)
+            ingress_packet = internal_parse_packets_to_scapy(copy_packet_hex_ingress, timestamp_ns)
+            ingress_packets.append(ingress_packet)
 
         elif custom_packet["direction"] == DIRECTION_BOTH_L3:
             copy_packet_hex_egress = DUMMY_L2_FRAME + custom_packet["copy_out"]
-            internal_parse_packets_to_scapy(egress_packets, copy_packet_hex_egress, timestamp_ns)
+            egress_packet = internal_parse_packets_to_scapy(copy_packet_hex_egress, timestamp_ns)
+            egress_packets.append(egress_packet)
+
             copy_packet_hex_ingress = DUMMY_L2_FRAME + custom_packet["copy_in"]
-            internal_parse_packets_to_scapy(ingress_packets, copy_packet_hex_ingress, timestamp_ns)
+            ingress_packet = internal_parse_packets_to_scapy(copy_packet_hex_ingress, timestamp_ns)
+            ingress_packets.append(ingress_packet)
 
         else:
             logger.error("Packet %d was not parsed due to abnormal direction attribute: %s",
                          custom_packet["id"], custom_packet["direction"])
 
-    result = {
+    return {
         "ingress_packets": ingress_packets,
         "egress_packets": egress_packets,
         "punted_packets": punted_packets
     }
 
-    return result
-
-def view_show_help():
-    print("usage: pt-process [-v | --version] [-h | --help] <input-packet-trace-file> [-s | --split]")
-    print("")
-    print(" -v or --version     Print version information.")
-    print(" -h or --help        Print this message.")
-    print(" -s or --split       Separate the packets into multiple PCAP files based on")
-    print("                     being either ingress, egress, or punted packets.")
-
-def view_show_version():
-    print("pt-process version 1.0.0")
-
-def view_process():
-    len_arg = len(sys.argv)
-    result =  dict()
-    result["split"] = 0
-
-    if len_arg < 2:
-        view_show_help()
-        return result
-    else:
-        i = 1
-        while i < len_arg:
-            argument = sys.argv[i]
-
-            if re.match(PATTERN_VIEW_HELP, argument):
-                view_show_help()
-                return result
-            elif re.match(PATTERN_VIEW_VERSION, argument):
-                view_show_version()
-                return result
-            elif re.match(PATTERN_VIEW_SPLIT, argument):
-                result["split"] = 1
-            elif re.match(PATTERN_VIEW_OPTION_GENERIC, argument):
-                raise ValueError("Unknown argument: " + argument)
-            elif "input" not in result:
-                result["input"] = glob(argument)
-
-                if not result["input"]: # Is empty
-                    raise ValueError("No valid files were found!")
-                else:
-                    for filename in result["input"]:
-                        try:
-                            validate_files(filename)
-                        except Exception as inst:
-                            raise ValueError("Invalid file: " + filename) from inst
-            i = i + 1
-
-        if "input" not in result:
-            raise ValueError("No input file available!")
-
-    return result
-
-def validate_files(input_filename):
-    with open(input_filename, "r") as input_file:
-        # Do nothing
-        input_file.readline()
-
 def write_outputs(input_filename, split, packets):
+    """
+    Arguments:
+    - input_filename: filename used to extract the packets.
+    - split: whether to split the packets into multiple files.
+    - packets: parsed packets from the input_filename file.
+
+    The function will save the packets in an output PCAP-formatted
+    file, or in multiple files if desired. The file will only be
+    created if the list of packets is not empty.
+    """
+
     ingress_packets = packets["ingress_packets"]
     egress_packets = packets["egress_packets"]
     punted_packets = packets["punted_packets"]
 
-    if split == 1:
+    if split:
         temp = input_filename.rsplit(".", 1)[0]
-        output_ingress = temp + "_ingress.pcap"
-        output_egress = temp + "_egress.pcap"
-        output_punted = temp + "_punted.pcap"
+        output_ingress  = temp + "_ingress.pcap"
+        output_egress   = temp + "_egress.pcap"
+        output_punted   = temp + "_punted.pcap"
 
         if ingress_packets:
             logger.info("Saving ingress packets to %s.", output_ingress)
@@ -419,7 +403,7 @@ def write_outputs(input_filename, split, packets):
         packets.sort(key=lambda x: x.time)
 
         temp = input_filename.rsplit(".", 1)[0]
-        output_file = temp + ".pcap"
+        output_file = temp + "_output.pcap"
 
         if packets:
             logger.info("Saving packets to %s.", output_file)
@@ -427,35 +411,89 @@ def write_outputs(input_filename, split, packets):
         else:
             logger.info("Empty packet list. Not possible to save %s.", output_file)
 
+def view_show_help():
+    """Print the help string with how to use the script."""
+    print("usage: pt-process [-v | --version] [-h | --help] <input-packet-trace-file> [-s | --split]")
+    print("")
+    print(" -v or --version     Print version information.")
+    print(" -h or --help        Print this message.")
+    print(" -s or --split       Separate the packets into multiple PCAP files based on")
+    print("                     being either ingress, egress, or punted packets.")
 
-### 1. Gather the data from the log file.
-### 2. Organize the information per packet into an array.
-### 3. Populate the metadata for each packet element in the array.
-### 4. Save the packets in a pcap file based on the decode.
+def view_show_version():
+    """Print the software version."""
+    print("pt-process version 1.1.0")
+
+def view_process():
+    """ Run the "View" processor, that parses the inputs
+    of the command line command to understand if we should:
+    - Display the "help" template.
+    - Display the current software version.
+    - Parse an input file and convert it into a PCAP.
+    """
+
+    len_arg = len(sys.argv)
+
+    # There should be at least 2 arguments: the name of the script and a
+    # script argument. If there's not, print the help string.
+
+    if len_arg < 2:
+        view_show_help()
+        return None
+
+    argument = sys.argv[1]
+
+    if re.match(PATTERN_VIEW_HELP, argument):
+        view_show_help()
+        return None
+
+    if re.match(PATTERN_VIEW_VERSION, argument):
+        view_show_version()
+        return None
+
+    # Check if the filename is valid
+    filename = argument
+
+    if not os.path.isfile(filename):
+        raise FileNotFoundError("File Not Found: " + filename)
+
+    if len_arg > 2:
+        split_argument = sys.argv[2]
+
+        if re.match(PATTERN_VIEW_SPLIT, split_argument):
+            return { "filename": filename, "split": True}
+
+    return { "filename": filename, "split": False }
+
+def main():
+    """ 
+    1. Gather the data from the log file.
+    2. Organize the information per packet into an array.
+    3. Populate the metadata for each packet element in the array.
+    4. Save the packets in a pcap file based on the decode.
+    """
+
+    parsed_args = view_process()
+    logger.setLevel(logging.WARN)
+
+    if parsed_args:
+        filename = parsed_args["filename"]
+        split = parsed_args["split"]
+
+        logger.info("----   Starting process for %s ----", filename)
+
+        logger.info("1 - Reading packets ")
+        custom_packets = parse_packets(filename)
+
+        logger.info("2 - Parsing packets ")
+        packets = parse_packets_to_scapy(custom_packets)
+
+        logger.info("3 - Saving outputs ")
+        logger.info(filename)
+
+        write_outputs(filename, split, packets)
+
 
 if __name__ == "__main__":
-    #filename = input("File name for outputs of \"show platform packet-trace packet all decode\": ")
-    start = 0
-
-    try:
-        result = view_process()
-        start = 1
-    except ValueError as inst:
-        logger.error(inst)
-
-    if start == 1 and result and "input" in result:
-        for input_filename in result["input"]:
-
-            logger.info("----   Starting process for %s ----", input_filename)
-
-            logger.info("1 - Reading packets ")
-            custom_packets = parse_packets(input_filename)
-
-            logger.info("2 - Parsing packets ")
-            packets = parse_packets_to_scapy(custom_packets)
-
-            logger.info("3 - Saving outputs ")
-
-            logger.info(input_filename)
-
-            write_outputs(input_filename, result["split"], packets)
+    main()
+    

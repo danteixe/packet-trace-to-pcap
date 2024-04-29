@@ -1,0 +1,117 @@
+Packet: 0           CBUG ID: 0
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet2
+  State     : CONS Packet Consumed
+  Timestamp
+    Start   : 250577880677571 ns (04/18/2024 14:13:09.999981 UTC)
+    Stop    : 250577880836869 ns (04/18/2024 14:13:10.140 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 1 (ICMP)
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 495 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 825 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 651 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 322 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 8721 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 53 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 35 ns
+  Feature: ICMPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Type        : 8 (Echo)
+    Code        : 0 (No Code)
+  Feature: STILE_LEGACY_DROP
+    Entry       : Input - 0x81473280
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 745 ns
+  Feature: INGRESS_MMA_LOOKUP_DROP
+    Entry       : Input - 0x8146c894
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 665 ns
+  Feature: INPUT_DROP_FNF_AOR
+    Entry       : Input - 0x81462664
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 727 ns
+  Feature: INPUT_FNF_DROP
+    Entry       : Input - 0x8144ae74
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 691 ns
+  Feature: INPUT_DROP_FNF_AOR_RELEASE
+    Entry       : Input - 0x81462660
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 614 ns
+  Feature: INPUT_DROP
+    Entry       : Input - 0x81437a24
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 102 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 20432 ns
+Packet Copy In
+  00530003 00010053 00020002 08004500 00402091 0000fe01 1824c000 0201c000
+  02060800 fb3c208e 00010000 00000eec fd9cabcd abcdabcd abcdabcd abcdabcd
+  abcdabcd abcdabcd abcd0206 c000
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 64
+    Identifier          : 0x2091
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 1 (ICMP)
+    Header Checksum     : 0x1824
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ICMP
+    Type                : 8 (Echo)
+    Code                : 0 (No Code)
+    Checksum            : 0xfb3c
+    Identifier          : 0x208e
+    Sequence            : 0x0001

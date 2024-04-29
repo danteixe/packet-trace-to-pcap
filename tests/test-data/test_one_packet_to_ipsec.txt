@@ -1,0 +1,207 @@
+Packet: 15          CBUG ID: 15
+Summary
+  Input     : GigabitEthernet2
+  Output    : Tunnel1
+  State     : CONS Packet Consumed
+  Timestamp
+    Start   : 250612576347603 ns (04/18/2024 14:13:44.695651 UTC)
+    Stop    : 250612576455904 ns (04/18/2024 14:13:44.695759 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 50 (ESP)
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 422 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 990 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 666 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 356 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 5089 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 43 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 12 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1885 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 380 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1332 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_FORUS
+    Entry       : Input - 0x81466dac
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1714 ns
+  Feature: IPSec
+    Action    : DECRYPT
+    SA Handle : 3
+    SPI       : 0x51c35887
+    Peer Addr : 192.0.2.1
+    Local Addr: 192.0.2.6
+  Feature: IPV4_INPUT_IPSEC_CLASSIFY
+    Entry       : Input - 0x81466da8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 4574 ns
+  Feature: IPV4_INPUT_IPSEC_INLINE_PROCESS
+    Entry       : Input - 0x8147e460
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 10858 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_RERUN_JUMP
+    Entry       : Input - 0x81466e44
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 930 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 401 ns
+  Feature: IPV4_INPUT_IPSEC_POST_PROCESS
+    Entry       : Input - 0x81467138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1342 ns
+  Feature: IPV4_INPUT_FOR_US
+    Entry       : Input - 0x814673e8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 859 ns
+  Feature: IPV4_IPSEC_FEATURE_RETURN
+    Entry       : Input - 0x81466e48
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 38 ns
+  Feature: IPV4_INPUT_TUNNEL_IPSEC_DECAP
+    Entry       : Input - 0x8147611c
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1836 ns
+  Feature: IPV4_TUNNEL_PROTECT_GOTO_INPUT_TUNNEL
+    Entry       : Input - 0x81476138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 994 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 302 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 188 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 101 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 2390 ns
+  Feature: ICMPV4(Input)
+    Input       : Tunnel1
+    Output      : <unknown>
+    Type        : 8 (Echo)
+    Code        : 0 (No Code)
+  Feature: STILE_LEGACY_DROP
+    Entry       : Input - 0x81473280
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 285 ns
+  Feature: INGRESS_MMA_LOOKUP_DROP
+    Entry       : Input - 0x8146c894
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 475 ns
+  Feature: INPUT_DROP_FNF_AOR
+    Entry       : Input - 0x81462664
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 781 ns
+  Feature: INPUT_FNF_DROP
+    Entry       : Input - 0x8144ae74
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1311 ns
+  Feature: INPUT_DROP_FNF_AOR_RELEASE
+    Entry       : Input - 0x81462660
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 674 ns
+  Feature: INPUT_DROP
+    Entry       : Input - 0x81437a24
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 105 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 18159 ns
+Packet Copy In
+  00530003 00010053 00020002 08004500 00881177 0000fe32 26c5c000 0201c000
+  020651c3 58870000 00044500 00581177 0000ff2f 25f8c000 0201c000 02060000
+  08004500 00402092 0000ff01 2325cb00 7101cb00 71030800 73b1208f 00010000
+  00000eed 8526abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0206
+  c0000102 0204f3df 3383f479 d6df35c7 bfc0f480 a00f
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x1177
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x26c5
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ESP
+    SPI                 : 0x51c35887
+    Sequence Number     : 0x00000004

@@ -1,0 +1,63 @@
+This is a METADATA file regarding the test cases for the packet-trace-to-pcap script.
+
+Author: Daniel Teixeira (Cisco)
+Date: April 15th 2024
+Last Updated: April 15th 2024
+
+The files in this directory are used for testing the corresponding script. They are collections of 
+packet captures made using the Cisco IOS-XE QFP Packet Tracer feature.
+
+They were collected in a virtual environment using Catalyst 8000v virtual routers, running IOS-XE 17.9.4a.
+The devices were arranged in a topology similar to the one below:
+
+ +-------+       +-------+       +-------+
+ |  R1   | G1    |  R2   | G2    |  R3   |
+ |       +-------+       +-------+       |
+ |       |    G1 |       |    G1 |       |
+ +-------+       +-------+       +-------+
+  vvvvvvv         vvvvvvv         vvvvvvv
+  from            through         to
+
+We collect packet traces with 4 types of traffic:
+
+- ICMP traffic generated with IP SLA.
+- UDP traffic generated with IP SLA.
+- TCP traffic generated with IP SLA.
+- IPSEC-encrypted traffic sent through a GRE over IPSEC tunnel.
+
+---- "from" tests (R1) ----
+
+- test_one_packet_from_icmp: Test one packet from the inject path through an interface (ICMP).
+- test_one_packet_from_ipsec: Test one packet from the inject path through an interface (IPSEC).
+- test_one_packet_from_tcp: Test one packet from the inject path through an interface (TCP).
+- test_one_packet_from_udp: Test one packet from the inject path through an interface (UDP).
+
+- test_multiple_packet_from_icmp: Test multiple packet from the inject path through an interface (ICMP).
+- test_multiple_packet_from_ipsec: Test multiple packet from the inject path through an interface (IPSEC).
+- test_multiple_packet_from_tcp: Test multiple packet from the inject path through an interface (TCP).
+- test_multiple_packet_from_udp: Test multiple packet from the inject path through an interface (UDP).
+
+---- "to" tests (R3) ----
+
+- test_one_packet_to_icmp: Test one packet from an interface to the inject path (ICMP).
+- test_one_packet_to_ipsec: Test one packet from an interface to the inject path (IPSEC).
+- test_one_packet_to_tcp: Test one packet from an interface to the inject path (TCP).
+- test_one_packet_to_udp: Test one packet from an interface to the inject path (UDP).
+
+- test_multiple_packet_to_icmp: Test multiple packet from an interface to the inject path (ICMP).
+- test_multiple_packet_to_ipsec: Test multiple packet from an interface to the inject path (IPSEC).
+- test_multiple_packet_to_tcp: Test multiple packet from an interface to the inject path (TCP).
+- test_multiple_packet_to_udp: Test multiple packet from an interface to the inject path (UDP).
+
+---- "through" tests (R2) ----
+
+- test_one_packet_through_icmp: Test one packet from an interface to another interface (ICMP).
+- test_one_packet_through_ipsec: Test one packet from an interface to another interface (IPSEC).
+- test_one_packet_through_tcp: Test one packet from an interface to another interface (TCP).
+- test_one_packet_through_udp: Test one packet from an interface to another interface (UDP).
+
+- test_multiple_packet_through_icmp: Test multiple packet from an interface to another interface (ICMP).
+- test_multiple_packet_through_ipsec: Test multiple packet from an interface to another interface (IPSEC).
+- test_multiple_packet_through_tcp: Test multiple packet from an interface to another interface (TCP).
+- test_multiple_packet_through_udp: Test multiple packet from an interface to another interface (UDP).
+

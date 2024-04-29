@@ -1,0 +1,948 @@
+Packet: 32          CBUG ID: 32
+Summary
+  Input     : GigabitEthernet2
+  Output    : Tunnel1
+  State     : CONS Packet Consumed
+  Timestamp
+    Start   : 250672575397363 ns (04/18/2024 14:14:44.694701 UTC)
+    Stop    : 250672575494379 ns (04/18/2024 14:14:44.694798 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 50 (ESP)
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 401 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1148 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 470 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 346 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 5024 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 52 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 12 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1803 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 410 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1311 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_FORUS
+    Entry       : Input - 0x81466dac
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1701 ns
+  Feature: IPSec
+    Action    : DECRYPT
+    SA Handle : 3
+    SPI       : 0x51c35887
+    Peer Addr : 192.0.2.1
+    Local Addr: 192.0.2.6
+  Feature: IPV4_INPUT_IPSEC_CLASSIFY
+    Entry       : Input - 0x81466da8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1773 ns
+  Feature: IPV4_INPUT_IPSEC_INLINE_PROCESS
+    Entry       : Input - 0x8147e460
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 11297 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_RERUN_JUMP
+    Entry       : Input - 0x81466e44
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 434 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 342 ns
+  Feature: IPV4_INPUT_IPSEC_POST_PROCESS
+    Entry       : Input - 0x81467138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 474 ns
+  Feature: IPV4_INPUT_FOR_US
+    Entry       : Input - 0x814673e8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1075 ns
+  Feature: IPV4_IPSEC_FEATURE_RETURN
+    Entry       : Input - 0x81466e48
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 36 ns
+  Feature: IPV4_INPUT_TUNNEL_IPSEC_DECAP
+    Entry       : Input - 0x8147611c
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 2325 ns
+  Feature: IPV4_TUNNEL_PROTECT_GOTO_INPUT_TUNNEL
+    Entry       : Input - 0x81476138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1274 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 300 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 166 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 13 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1739 ns
+  Feature: ICMPV4(Input)
+    Input       : Tunnel1
+    Output      : <unknown>
+    Type        : 8 (Echo)
+    Code        : 0 (No Code)
+  Feature: STILE_LEGACY_DROP
+    Entry       : Input - 0x81473280
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 293 ns
+  Feature: INGRESS_MMA_LOOKUP_DROP
+    Entry       : Input - 0x8146c894
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 484 ns
+  Feature: INPUT_DROP_FNF_AOR
+    Entry       : Input - 0x81462664
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1636 ns
+  Feature: INPUT_FNF_DROP
+    Entry       : Input - 0x8144ae74
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 727 ns
+  Feature: INPUT_DROP_FNF_AOR_RELEASE
+    Entry       : Input - 0x81462660
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 368 ns
+  Feature: INPUT_DROP
+    Entry       : Input - 0x81437a24
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 538 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 55420 ns
+Packet Copy In
+  00530003 00010053 00020002 08004500 00881178 0000fe32 26c4c000 0201c000
+  020651c3 58870000 00054500 00581178 0000ff2f 25f7c000 0201c000 02060000
+  08004500 00402094 0000ff01 2323cb00 7101cb00 71030800 894f2091 00010000
+  00000eee 6f85abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0206
+  c0000102 0204b0c7 b9e66b99 befad16b 0c8613f8 2e16
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x1178
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x26c4
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ESP
+    SPI                 : 0x51c35887
+    Sequence Number     : 0x00000005
+Packet: 33          CBUG ID: 33
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 250672575544881 ns (04/18/2024 14:14:44.694848 UTC)
+    Stop    : 250672575561568 ns (04/18/2024 14:14:44.694865 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 50 (ESP)
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 35 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 56 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 111 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 153 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 2006 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 137 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 6710 ns
+Packet Copy In
+  45000088 116b0000 ff3225d1 c0000206 c0000201 78f7ebc6 00000005 45000058
+  116d0000 ff2f2602 c0000206 c0000201 00000800 45000040 20940000 ff012323
+  cb007103 cb007101 0000914f 20910001 00000000 0eee6f85 abcdabcd abcdabcd
+  abcdabcd abcdabcd abcdabcd abcdabcd 0206c000 01020204 d1d3b7ad 28293182
+  9b11da5e 7b83e132
+  Unable to decode layer 2 trying to skip to layer 3
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x116b
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x25d1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ESP
+    SPI                 : 0x78f7ebc6
+    Sequence Number     : 0x00000005
+Packet Copy Out
+  00530002 00020053 00030001 08004500 0088116b 0000ff32 25d1c000 0206c000
+  020178f7 ebc60000 00054500 0058116d 0000ff2f 2602c000 0206c000 02010000
+  08004500 00402094 0000ff01 2323cb00 7103cb00 71010000 914f2091 00010000
+  00000eee 6f85abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0206
+  c0000102 0204d1d3 b7ad2829 31829b11 da5e7b83 e132
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x116b
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x25d1
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ESP
+    SPI                 : 0x78f7ebc6
+    Sequence Number     : 0x00000005
+Packet: 49          CBUG ID: 49
+Summary
+  Input     : GigabitEthernet2
+  Output    : Tunnel1
+  State     : CONS Packet Consumed
+  Timestamp
+    Start   : 250732575809765 ns (04/18/2024 14:15:44.695113 UTC)
+    Stop    : 250732575904525 ns (04/18/2024 14:15:44.695208 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 50 (ESP)
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 201 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1650 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 516 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 325 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 6007 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 40 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 34 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1729 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 125 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1493 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_FORUS
+    Entry       : Input - 0x81466dac
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 2536 ns
+  Feature: IPSec
+    Action    : DECRYPT
+    SA Handle : 3
+    SPI       : 0x51c35887
+    Peer Addr : 192.0.2.1
+    Local Addr: 192.0.2.6
+  Feature: IPV4_INPUT_IPSEC_CLASSIFY
+    Entry       : Input - 0x81466da8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1292 ns
+  Feature: IPV4_INPUT_IPSEC_INLINE_PROCESS
+    Entry       : Input - 0x8147e460
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 10390 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_RERUN_JUMP
+    Entry       : Input - 0x81466e44
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 438 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 59 ns
+  Feature: IPV4_INPUT_IPSEC_POST_PROCESS
+    Entry       : Input - 0x81467138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 521 ns
+  Feature: IPV4_INPUT_FOR_US
+    Entry       : Input - 0x814673e8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 552 ns
+  Feature: IPV4_IPSEC_FEATURE_RETURN
+    Entry       : Input - 0x81466e48
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 45 ns
+  Feature: IPV4_INPUT_TUNNEL_IPSEC_DECAP
+    Entry       : Input - 0x8147611c
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1709 ns
+  Feature: IPV4_TUNNEL_PROTECT_GOTO_INPUT_TUNNEL
+    Entry       : Input - 0x81476138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1455 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 291 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 184 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 104 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 3729 ns
+  Feature: ICMPV4(Input)
+    Input       : Tunnel1
+    Output      : <unknown>
+    Type        : 8 (Echo)
+    Code        : 0 (No Code)
+  Feature: STILE_LEGACY_DROP
+    Entry       : Input - 0x81473280
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1129 ns
+  Feature: INGRESS_MMA_LOOKUP_DROP
+    Entry       : Input - 0x8146c894
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 478 ns
+  Feature: INPUT_DROP_FNF_AOR
+    Entry       : Input - 0x81462664
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 717 ns
+  Feature: INPUT_FNF_DROP
+    Entry       : Input - 0x8144ae74
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 712 ns
+  Feature: INPUT_DROP_FNF_AOR_RELEASE
+    Entry       : Input - 0x81462660
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 531 ns
+  Feature: INPUT_DROP
+    Entry       : Input - 0x81437a24
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 103 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 17237 ns
+Packet Copy In
+  00530003 00010053 00020002 08004500 00881179 0000fe32 26c3c000 0201c000
+  020651c3 58870000 00064500 00581179 0000ff2f 25f6c000 0201c000 02060000
+  08004500 00402096 0000ff01 2321cb00 7101cb00 71030800 9eec2093 00010000
+  00000eef 59e5abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0206
+  c0000102 0204262a 7b02ff55 e6f90772 422a0577 0fa2
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x1179
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x26c3
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ESP
+    SPI                 : 0x51c35887
+    Sequence Number     : 0x00000006
+Packet: 50          CBUG ID: 50
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 250732575980675 ns (04/18/2024 14:15:44.695284 UTC)
+    Stop    : 250732575987152 ns (04/18/2024 14:15:44.695291 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 50 (ESP)
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 34 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 99 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 133 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 32 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 33 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 1207 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 126 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 2827 ns
+Packet Copy In
+  45000088 116c0000 ff3225d0 c0000206 c0000201 78f7ebc6 00000006 45000058
+  116e0000 ff2f2601 c0000206 c0000201 00000800 45000040 20960000 ff012321
+  cb007103 cb007101 0000a6ec 20930001 00000000 0eef59e5 abcdabcd abcdabcd
+  abcdabcd abcdabcd abcdabcd abcdabcd 0206c000 01020204 58127b8d fb3b6913
+  62303ad8 fb6e738f
+  Unable to decode layer 2 trying to skip to layer 3
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x116c
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x25d0
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ESP
+    SPI                 : 0x78f7ebc6
+    Sequence Number     : 0x00000006
+Packet Copy Out
+  00530002 00020053 00030001 08004500 0088116c 0000ff32 25d0c000 0206c000
+  020178f7 ebc60000 00064500 0058116e 0000ff2f 2601c000 0206c000 02010000
+  08004500 00402096 0000ff01 2321cb00 7103cb00 71010000 a6ec2093 00010000
+  00000eef 59e5abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0206
+  c0000102 02045812 7b8dfb3b 69136230 3ad8fb6e 738f
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x116c
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x25d0
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ESP
+    SPI                 : 0x78f7ebc6
+    Sequence Number     : 0x00000006
+Packet: 66          CBUG ID: 66
+Summary
+  Input     : GigabitEthernet2
+  Output    : Tunnel1
+  State     : CONS Packet Consumed
+  Timestamp
+    Start   : 250792576186535 ns (04/18/2024 14:16:44.695490 UTC)
+    Stop    : 250792576274475 ns (04/18/2024 14:16:44.695578 UTC)
+Path Trace
+  Feature: IPV4(Input)
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Source      : 192.0.2.1
+    Destination : 192.0.2.6
+    Protocol    : 50 (ESP)
+  Feature: DEBUG_COND_INPUT_PKT
+    Entry       : Input - 0x81439d70
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 184 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1143 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 582 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 364 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 4504 ns
+  Feature: DEBUG_COND_APPLICATION_IN
+    Entry       : Input - 0x81439d60
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 42 ns
+  Feature: DEBUG_COND_APPLICATION_IN_CLR_TXT
+    Entry       : Input - 0x81439d5c
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 13 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 1107 ns
+  Feature: IPV4_INPUT_IPOPTIONS_PROCESS
+    Entry       : Input - 0x81467908
+    Input       : GigabitEthernet2
+    Output      : <unknown>
+    Lapsed time : 119 ns
+  Feature: IPV4_INPUT_GOTO_OUTPUT_FEATURE
+    Entry       : Input - 0x8143d7f8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1344 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_FORUS
+    Entry       : Input - 0x81466dac
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1272 ns
+  Feature: IPSec
+    Action    : DECRYPT
+    SA Handle : 3
+    SPI       : 0x51c35887
+    Peer Addr : 192.0.2.1
+    Local Addr: 192.0.2.6
+  Feature: IPV4_INPUT_IPSEC_CLASSIFY
+    Entry       : Input - 0x81466da8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1255 ns
+  Feature: IPV4_INPUT_IPSEC_INLINE_PROCESS
+    Entry       : Input - 0x8147e460
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 10932 ns
+  Feature: IPV4_INPUT_IPSEC_TUNNEL_RERUN_JUMP
+    Entry       : Input - 0x81466e44
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 441 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 552 ns
+  Feature: IPV4_INPUT_IPSEC_POST_PROCESS
+    Entry       : Input - 0x81467138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 941 ns
+  Feature: IPV4_INPUT_FOR_US
+    Entry       : Input - 0x814673e8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 780 ns
+  Feature: IPV4_IPSEC_FEATURE_RETURN
+    Entry       : Input - 0x81466e48
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 46 ns
+  Feature: IPV4_INPUT_TUNNEL_IPSEC_DECAP
+    Entry       : Input - 0x8147611c
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 2040 ns
+  Feature: IPV4_TUNNEL_PROTECT_GOTO_INPUT_TUNNEL
+    Entry       : Input - 0x81476138
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 850 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_ISSUE
+    Entry       : Input - 0x814673dc
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 297 ns
+  Feature: IPV4_INPUT_ARL_SANITY
+    Entry       : Input - 0x8143bd80
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 179 ns
+  Feature: IPV4_INPUT_DST_LOOKUP_CONSUME
+    Entry       : Input - 0x814673d8
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 43 ns
+  Feature: IPV4_INPUT_FOR_US_MARTIAN
+    Entry       : Input - 0x814673e4
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 2687 ns
+  Feature: ICMPV4(Input)
+    Input       : Tunnel1
+    Output      : <unknown>
+    Type        : 8 (Echo)
+    Code        : 0 (No Code)
+  Feature: STILE_LEGACY_DROP
+    Entry       : Input - 0x81473280
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 303 ns
+  Feature: INGRESS_MMA_LOOKUP_DROP
+    Entry       : Input - 0x8146c894
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 460 ns
+  Feature: INPUT_DROP_FNF_AOR
+    Entry       : Input - 0x81462664
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 1421 ns
+  Feature: INPUT_FNF_DROP
+    Entry       : Input - 0x8144ae74
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 841 ns
+  Feature: INPUT_DROP_FNF_AOR_RELEASE
+    Entry       : Input - 0x81462660
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 633 ns
+  Feature: INPUT_DROP
+    Entry       : Input - 0x81437a24
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 104 ns
+  Feature: IPV4_INPUT_LOOKUP_PROCESS
+    Entry       : Input - 0x814673f0
+    Input       : Tunnel1
+    Output      : <unknown>
+    Lapsed time : 22938 ns
+Packet Copy In
+  00530003 00010053 00020002 08004500 0088117a 0000fe32 26c2c000 0201c000
+  020651c3 58870000 00074500 0058117a 0000ff2f 25f5c000 0201c000 02060000
+  08004500 00402098 0000ff01 231fcb00 7101cb00 71030800 76902095 00010000
+  00000ef0 4445abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0000
+  00000102 0204b8da 3369b145 93756e86 ffa36ccf 6f79
+  ARPA
+    Destination MAC     : 0053.0003.0001
+    Source MAC          : 0053.0002.0002
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x117a
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 254
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x26c2
+    Source Address      : 192.0.2.1
+    Destination Address : 192.0.2.6
+  ESP
+    SPI                 : 0x51c35887
+    Sequence Number     : 0x00000007
+Packet: 67          CBUG ID: 67
+Summary
+  Input     : GigabitEthernet2
+  Output    : GigabitEthernet2
+  State     : FWD 
+  Timestamp
+    Start   : 250792576324375 ns (04/18/2024 14:16:44.695628 UTC)
+    Stop    : 250792576331825 ns (04/18/2024 14:16:44.695635 UTC)
+Path Trace
+  Feature: IPV4(Output)
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Source      : 192.0.2.6
+    Destination : 192.0.2.1
+    Protocol    : 50 (ESP)
+  Feature: IPV4_VFR_REFRAG
+    Entry       : Output - 0x8146831c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 33 ns
+  Feature: DEBUG_COND_APPLICATION_OUT_CLR_TXT
+    Entry       : Output - 0x81439d64
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 44 ns
+  Feature: IPV4_OUTPUT_L2_REWRITE
+    Entry       : Output - 0x812c8e3c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 115 ns
+  Feature: DEBUG_COND_MAC_EGRESS
+    Entry       : Output - 0x81439d78
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 141 ns
+  Feature: DEBUG_COND_APPLICATION_OUT
+    Entry       : Output - 0x81439d68
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 32 ns
+  Feature: IPV4_OUTPUT_FRAG
+    Entry       : Output - 0x814672b8
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 32 ns
+  Feature: IPV4_OUTPUT_DROP_POLICY
+    Entry       : Output - 0x81470c18
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 705 ns
+  Feature: DEBUG_COND_OUTPUT_PKT
+    Entry       : Output - 0x81439d7c
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 117 ns
+  Feature: MARMOT_SPA_D_TRANSMIT_PKT
+    Entry       : Output - 0x8147e7a4
+    Input       : GigabitEthernet2
+    Output      : GigabitEthernet2
+    Lapsed time : 4381 ns
+Packet Copy In
+  45000088 116d0000 ff3225cf c0000206 c0000201 78f7ebc6 00000007 45000058
+  116f0000 ff2f2600 c0000206 c0000201 00000800 45000040 20980000 ff01231f
+  cb007103 cb007101 00007e90 20950001 00000000 0ef04445 abcdabcd abcdabcd
+  abcdabcd abcdabcd abcdabcd abcdabcd 00000000 01020204 44a412db 7ca34a0f
+  63fcae28 4af0c6ca
+  Unable to decode layer 2 trying to skip to layer 3
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x116d
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x25cf
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ESP
+    SPI                 : 0x78f7ebc6
+    Sequence Number     : 0x00000007
+Packet Copy Out
+  00530002 00020053 00030001 08004500 0088116d 0000ff32 25cfc000 0206c000
+  020178f7 ebc60000 00074500 0058116f 0000ff2f 2600c000 0206c000 02010000
+  08004500 00402098 0000ff01 231fcb00 7103cb00 71010000 7e902095 00010000
+  00000ef0 4445abcd abcdabcd abcdabcd abcdabcd abcdabcd abcdabcd abcd0000
+  00000102 020444a4 12db7ca3 4a0f63fc ae284af0 c6ca
+  ARPA
+    Destination MAC     : 0053.0002.0002
+    Source MAC          : 0053.0003.0001
+    Type                : 0x0800 (IPV4)
+  IPv4
+    Version             : 4
+    Header Length       : 5
+    ToS                 : 0x00
+    Total Length        : 136
+    Identifier          : 0x116d
+    IP Flags            : 0x0
+    Frag Offset         : 0
+    TTL                 : 255
+    Protocol            : 50 (ESP)
+    Header Checksum     : 0x25cf
+    Source Address      : 192.0.2.6
+    Destination Address : 192.0.2.1
+  ESP
+    SPI                 : 0x78f7ebc6
+    Sequence Number     : 0x00000007
