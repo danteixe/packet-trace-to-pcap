@@ -91,18 +91,3 @@ Traffic can assume the following directions:
 - Injected and then egress: This will be saved on the egress file, considering the egress decode.
 
 The first direction will generate an ingress and an egress packet.
-
-## TODO
-
-Development:
-
-- (Done) Generate two PCAP files for each output, separating ingress from egress traffic.
-- (Done) Stop asking for the inputs and use arguments instead.
-- (Done) Test with more outputs to make sure code is working as intended.
-- (Done) Add another PCAP output file for punted traffic.
-
-Deployment:
-
-- (Done) Implement as a BDB Script.
-- Add to the Engineering Server.
-- Add as an IC Tool such as Spotlight.
